@@ -8,7 +8,6 @@ function CityList({ cities, isLoading }) {
     return (
       <Message message="Add your city by clicking on the city in the Map" />
     );
-  console.log(cities);
   return (
     <div className={styles.cityList}>
       <ul>

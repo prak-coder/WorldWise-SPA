@@ -1,5 +1,25 @@
-function CountryList() {
-  return <div>Contries</div>;
+import CountryItem from "./CountryItem";
+import styles from "./CityList.module.css";
+import Spinner from "./Spinner";
+import Message from "./Message";
+function CountryList({ cities, isLoading }) {
+  if (isLoading) return <Spinner />;
+  if (!cities.length)
+    return (
+      <Message message="Add your city by clicking on the city in the Map" />
+    );
+  const countries = cities.reduce((arr, city) => {
+    if (!arr.map((el) => el.country).includes(city.country))
+      return [...arr, { country: city.country, emoji: city.emoji }];
+    else return arr;
+  }, []);
+  return (
+    <ul className={styles.countryList}>
+      {countries.map((country) => (
+        <CountryItem country={country} key={country.country} />
+      ))}
+    </ul>
+  );
 }
 
 export default CountryList;
