@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import City from "./components/City";
 
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -47,6 +48,7 @@ function App() {
               path="cities"
               element={<CityList cities={cities} isLoading={isLoading} />}
             />
+            <Route path="cities/:id" element={<City />} />
             <Route
               path="countries"
               element={<CountryList cities={cities} isLoading={isLoading} />}
